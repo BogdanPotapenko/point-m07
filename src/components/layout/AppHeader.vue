@@ -11,7 +11,7 @@
         <nav class="header-content-navbar" :class="{ active: activeMenu }">
           <ul class="header-content-navbar-list">
             <li>
-              <a class="link" @click="click(about)">About</a>
+              <a class="link" @click="click(hero)">About</a>
             </li>
             <li>
               <a class="link" @click="click(services)">Services</a>
@@ -23,7 +23,7 @@
               <a class="link" @click="click(contacts)">Contacts</a>
             </li>
             <li>
-              <a class="link" @click="click(locations)">Locations</a>
+              <a class="link" @click="click(location)">Location</a>
             </li>
           </ul>
         </nav>
@@ -35,20 +35,20 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 
-const about = ref();
+const hero = ref();
 const services = ref();
 const price = ref();
 const contacts = ref();
-const locations = ref();
+const location = ref();
 
 const activeMenu = ref(false);
 
 onMounted(() => {
-  about.value = document.getElementById("about");
+  hero.value = document.getElementById("hero");
   services.value = document.getElementById("services");
   price.value = document.getElementById("price");
   contacts.value = document.getElementById("contacts");
-  locations.value = document.getElementById("locations");
+  location.value = document.getElementById("location");
 });
 
 const click = (el: HTMLElement) => {
