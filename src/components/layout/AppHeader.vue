@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="header-container">
-      <div class="header-logo">POINT.M07</div>
+      <div class="header-logo">
+        <img src="/src/assets/img/logo.png" alt="" />
+      </div>
 
       <div class="header-content">
         <div @click="activeMenu = !activeMenu" class="header-content-button">
@@ -76,12 +78,13 @@ watch(activeMenu, () => {
   z-index: 10;
   width: 100%;
   background: #464957;
-  padding: 0 60px;
+  padding: 0 calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
 
   &-container {
     max-width: 1440px;
     margin: 0 auto;
     min-height: 60px;
+    height: 60px;
     display: grid;
     gap: 15px;
     padding: 5px 0;
@@ -93,9 +96,14 @@ watch(activeMenu, () => {
     }
   }
   &-logo {
+    height: 50px;
     position: relative;
     z-index: 11;
-    color: $white;
+
+    img {
+      width: auto;
+      height: 100%;
+    }
   }
   &-content {
     justify-self: end;
@@ -113,17 +121,19 @@ watch(activeMenu, () => {
 
       .button-el {
         width: 30px;
-        height: 4px;
+        height: 3px;
         transition-duration: 500ms;
         background: $white;
+        border-radius: 2px;
 
         &::before,
         &::after {
           content: "";
           width: 30px;
-          height: 4px;
+          height: 3px;
           position: absolute;
           left: 0;
+          border-radius: 2px;
           transition-duration: 500ms;
           background: $white;
         }
@@ -165,7 +175,7 @@ watch(activeMenu, () => {
         left: 100%;
         padding: 100px 60px 30px 30px;
         overflow: auto;
-        background: $background;
+        background: #656c88;
         transition-duration: 500ms;
 
         &.active {
@@ -206,7 +216,6 @@ watch(activeMenu, () => {
         }
         .link {
           display: block;
-          color: $white;
           margin: 3px 0;
 
           &::before,

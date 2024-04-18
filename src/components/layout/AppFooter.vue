@@ -1,7 +1,7 @@
 <template>
   <div id="location" class="footer">
     <GoogleMap
-      api-key="AIzaSyBROp7Je-ZOaKHAW4LPiZDRprjntYtZ9cw"
+      :api-key="apiKey"
       class="google-map"
       :center="center"
       :zoom="15"
@@ -34,6 +34,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { GoogleMap, CustomMarker } from "vue3-google-map";
+
+const apiKey = import.meta.env.VITE_API_kEY;
+
+console.log(apiKey);
 
 const center = ref({ lat: 50.53573236551917, lng: 30.21061096980906 });
 
@@ -279,9 +283,9 @@ const styles = ref([
   .google-map {
     position: relative;
     width: 100%;
-    height: 500px;
-    margin-top: 50px;
     height: 40vh;
+    min-height: 300px;
+    margin-top: 50px;
 
     &-link {
       position: absolute;
@@ -329,6 +333,7 @@ const styles = ref([
     span {
       font-size: 10px;
       line-height: 10px;
+      color: $black;
     }
   }
 }

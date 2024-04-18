@@ -24,11 +24,13 @@ body,
   min-height: 100%;
   background: $background;
   font-family: "Roboto", sans-serif;
+  color: $white;
 }
 
 a {
   text-decoration: none;
   cursor: pointer;
+  color: inherit;
 }
 
 ul {
@@ -63,9 +65,51 @@ h4 {
   line-height: 18px;
   color: $primary;
 }
+h5 {
+  font-size: 20px;
+  line-height: 20px;
+  color: $primary;
+  font-weight: 600;
+}
 
 .container {
   max-width: 1440px;
   margin: 0 auto;
   height: 100%;
+}
+
+.background {
+  position: relative;
+  background-image: url(/src/assets/img/hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(
+      to bottom,
+      rgba(51, 54, 68, 1) 0%,
+      rgba(51, 54, 68, 0.4) 100%
+    );
+    width: 100%;
+    height: 30%;
+    top: 0;
+    left: 0;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(
+      to top,
+      rgba(51, 54, 68, 1) 0%,
+      rgba(51, 54, 68, 0.4) 100%
+    );
+    width: 100%;
+    height: 70%;
+    bottom: 0;
+    left: 0;
+  }
 }

@@ -2,6 +2,7 @@
   <div class="wrapper">
     <app-header />
     <div class="main">
+      <div class="background"></div>
       <hero />
       <services />
       <price />

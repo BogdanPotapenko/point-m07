@@ -1,26 +1,11 @@
 <template>
-  <section id="price" class="price">
+  <section id="price" class="price background">
     <div class="container">
-      <h2 class="price-title">Price list</h2>
-      <div class="price-list">
+      <div class="price-content">
         <price-card
           tilte="полірування"
-          :prices="[
-            'Полірування авто - від 3000грн',
-            'Полірування фар - від 500грн',
-            'Полірування одного елементу - від 300грн',
-          ]"
-        />
-        <price-card
-          tilte="плівка"
-          :prices="['Поклейка фар - від 1500грн']"
+          :prices="prices"
           warning="Поклейка авто в плівку і її ціна обговорюється при зустрічі або по телефону."
-        />
-        <price-card
-          tilte="хімчистка"
-          :prices="['Хімчистка авто - від 1000грн']"
-          warning="Всі ціни обговорюються при огляді автомобіля, після цього авто береться
-        в роботу."
         />
       </div>
     </div>
@@ -28,17 +13,36 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import PriceCard from "../domains/PriceList/PriceCard.vue";
+
+const prices = ref([
+  {
+    title: "полірування",
+    text: [
+      "Полірування авто - від 3000грн",
+      "Полірування фар - від 500грн",
+      "Полірування одного елементу - від 300грн",
+    ],
+  },
+  {
+    title: "плівка",
+    text: ["Поклейка фар - від 1500грн"],
+  },
+  {
+    title: "хімчистка",
+    text: ["Хімчистка авто - від 1000грн"],
+  },
+]);
 </script>
 
 <style lang="scss" scoped>
 .price {
-  padding: 0 calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+  padding: 150px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
 
-  &-title {
-    text-align: center;
-  }
-  &-list {
+  &-content {
+    position: relative;
+    z-index: 1;
     margin-top: 20px;
     display: flex;
     justify-content: center;
