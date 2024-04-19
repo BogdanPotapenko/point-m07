@@ -22,59 +22,58 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100lvh;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-  background-attachment: inherit;
-  background-size: cover;
   background-color: rgba(51, 54, 68, 0.5);
-  background-repeat: no-repeat;
   overflow: hidden;
 
   &::before {
     content: "";
-    min-height: 100vh;
+    min-height: 100%;
     display: block;
     position: fixed;
     z-index: -1;
-    bottom: 0;
     left: 0;
     right: 0;
     top: 0;
-    top: -100px;
-    transform: translateY(100px);
-    --tw-translate-y: 100px
-    padding-bottom: 100px;
+    bottom: 0;
     background: url(/src/assets/img/hero.jpg);
-    background-position-x: center;
-    background-position-y: -100px;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
+
+    @media screen and (max-width: 1024px) {
+      background-position: top -300px center;
+      background-size: auto;
+    }
   }
 
-  & .top {
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 58px;
-    height: 50vh;
-    background: linear-gradient(
-      to bottom,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
-    );
-  }
+  // & .top {
+  //   width: 100%;
+  //   position: fixed;
+  //   left: 0;
+  //   top: 58px;
+  //   height: 50vh;
+  //   background: linear-gradient(
+  //     to bottom,
+  //     rgba(51, 54, 68, 1) 0%,
+  //     rgba(51, 54, 68, 0) 100%
+  //   );
+  // }
 
-  & .bottom {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    height: 50vh;
-    background: linear-gradient(
-      to top,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
-    );
-  }
+  // & .bottom {
+  //   width: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   bottom: -1px;
+  //   height: 50vh;
+  //   background: linear-gradient(
+  //     to top,
+  //     rgba(51, 54, 68, 1) 0%,
+  //     rgba(51, 54, 68, 0) 100%
+  //   );
+  // }
 
   &-content {
     position: relative;
