@@ -29,11 +29,13 @@
   overflow: hidden;
 
   .background {
+    width: 100%;
+    height: 100%;
     position: fixed;
     left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
+    top: -100px;
+    transform: translateY(100px);
+    padding-bottom: 100px;
     display: block;
     background: url(/src/assets/img/hero.jpg) no-repeat 50%;
     z-index: -1;
