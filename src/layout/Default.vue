@@ -29,5 +29,9 @@ import Contacts from "../components/sections/Contacts.vue";
 .main {
   width: 100%;
   flex: 1 1 auto;
+  position: relative;
+  z-index: 1;
+  background: $background;
+  overflow: hidden;
 }
 </style>

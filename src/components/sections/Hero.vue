@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="hero">
-    <div class="background"></div>
+    <span class="top"></span>
     <div class="container">
       <div class="hero-content">
         <h1>Point.m07</h1>
@@ -12,6 +12,7 @@
         </p>
       </div>
     </div>
+    <span class="bottom"></span>
   </section>
 </template>
 
@@ -23,34 +24,30 @@
   width: 100%;
   height: 100vh;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-  background-attachment: inherit !important;
+  background-attachment: inherit;
   background-size: cover;
   background-color: rgba(51, 54, 68, 0.5);
+  background-repeat: no-repeat;
   overflow: hidden;
-
-  .background {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: -100px;
-    transform: translateY(100px);
-    padding-bottom: 100px;
-    display: block;
-    background: url(/src/assets/img/hero.jpg) no-repeat 50%;
-    z-index: -1;
-    background-size: cover;
-  }
-
-  &::before,
-  &::after {
-    width: 100%;
-    left: 0;
-  }
 
   &::before {
     content: "";
     position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background: url(/src/assets/img/hero.jpg) no-repeat 50%;
+    background-size: cover;
+  }
+
+  & .top {
+    content: "";
+    width: 100%;
+    position: fixed;
+    left: 0;
     top: 58px;
     height: 50vh;
     background: linear-gradient(
@@ -60,9 +57,11 @@
     );
   }
 
-  &::after {
+  & .bottom {
     content: "";
+    width: 100%;
     position: absolute;
+    left: 0;
     bottom: -1px;
     height: 50vh;
     background: linear-gradient(
