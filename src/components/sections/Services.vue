@@ -10,8 +10,10 @@
 
 <style lang="scss" scoped>
 .services {
-  padding: 0 calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+  position: relative;
+  padding: 60px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
   height: 1000px;
+  background: $background;
 
   &-title {
     text-align: center;

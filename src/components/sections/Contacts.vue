@@ -48,11 +48,13 @@
 
 <style lang="scss" scoped>
 .contacts {
+  position: relative;
   padding: 60px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+  background: $background;
 
   &-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 20px;
 
     @media screen and (max-width: 767px) {
@@ -64,12 +66,16 @@
     &-logo {
       display: flex;
       flex-direction: column;
-
       justify-content: center;
       max-width: 30%;
+      @media screen and (max-width: 767px) {
+        max-width: 250px;
+      }
+
       img {
         width: 100%;
-        max-width: 400px;
+        min-width: 20px;
+        max-width: 350px;
         transform: scale(1.1);
       }
     }
@@ -77,13 +83,13 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 30px;
     }
     &-contacts {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 30px;
       word-wrap: break-word;
 
       @media screen and (max-width: 767px) {

@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header-scroll': header }">
     <div class="header-container">
       <div class="header-logo">
         <img src="/src/assets/img/logo.png" alt="" />
@@ -45,6 +45,8 @@ const location = ref();
 
 const activeMenu = ref(false);
 
+const header = ref(false);
+
 onMounted(() => {
   hero.value = document.getElementById("hero");
   services.value = document.getElementById("services");
@@ -60,6 +62,14 @@ const click = (el: HTMLElement) => {
     window.scrollTo({ top: y, behavior: "smooth" });
   }
 };
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY === 0) {
+    header.value = false;
+  } else if (header.value === false && window.scrollY > 0) {
+    header.value = true;
+  }
+});
 
 watch(activeMenu, () => {
   if (activeMenu.value) {
@@ -77,8 +87,26 @@ watch(activeMenu, () => {
   left: 0;
   z-index: 10;
   width: 100%;
-  background: #464957;
+  background: $background;
   padding: 0 calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 1px;
+    background: $primary;
+    transition-duration: 500ms;
+  }
+
+  &-scroll {
+    &::after {
+      content: "";
+      width: 100%;
+    }
+  }
 
   &-container {
     max-width: 1440px;

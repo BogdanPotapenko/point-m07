@@ -2,7 +2,6 @@
   <div class="wrapper">
     <app-header />
     <div class="main">
-      <div class="background"></div>
       <hero />
       <services />
       <price />
@@ -29,7 +28,6 @@ import Contacts from "../components/sections/Contacts.vue";
 }
 .main {
   width: 100%;
-  padding-top: 60px;
   flex: 1 1 auto;
 }
 </style>

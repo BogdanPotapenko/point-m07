@@ -37,8 +37,6 @@ import { GoogleMap, CustomMarker } from "vue3-google-map";
 
 const apiKey = import.meta.env.VITE_API_kEY;
 
-console.log(apiKey);
-
 const center = ref({ lat: 50.53573236551917, lng: 30.21061096980906 });
 
 const styles = ref([
@@ -279,14 +277,13 @@ const styles = ref([
 <style lang="scss" scoped>
 .footer {
   position: relative;
+  background: $background;
 
   .google-map {
     position: relative;
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     min-height: 300px;
-    margin-top: 50px;
-
     &-link {
       position: absolute;
       top: 0;
