@@ -32,19 +32,25 @@
 
   &::before {
     content: "";
+    min-height: 100vh;
+    display: block;
     position: fixed;
     z-index: -1;
-    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display: block;
-    background: url(/src/assets/img/hero.jpg) no-repeat 50%;
+    top: 0;
+    top: -100px;
+    transform: translateY(100px);
+    --tw-translate-y: 100px
+    padding-bottom: 100px;
+    background: url(/src/assets/img/hero.jpg);
+    background-position-x: center;
+    background-position-y: -100px;
     background-size: cover;
   }
 
   & .top {
-    content: "";
     width: 100%;
     position: fixed;
     left: 0;
@@ -58,7 +64,6 @@
   }
 
   & .bottom {
-    content: "";
     width: 100%;
     position: absolute;
     left: 0;

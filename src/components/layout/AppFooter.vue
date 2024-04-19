@@ -281,6 +281,7 @@ const styles = ref([
 
   .google-map {
     position: relative;
+    z-index: 2;
     width: 100%;
     height: 50vh;
     min-height: 300px;
