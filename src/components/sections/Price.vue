@@ -39,7 +39,7 @@ const prices = ref([
 <style lang="scss" scoped>
 .price {
   position: relative;
-  padding: 60px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+  padding: 200px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
   background-attachment: inherit !important;
   background-size: cover;
   background-color: rgba(51, 54, 68, 0.7);
@@ -47,7 +47,7 @@ const prices = ref([
   &::before,
   &::after {
     width: 100%;
-    height: 50vh;
+    height: 50%;
     position: absolute;
     left: 0;
   }

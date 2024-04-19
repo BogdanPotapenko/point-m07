@@ -4,7 +4,7 @@
       :api-key="apiKey"
       class="google-map"
       :center="center"
-      :zoom="15"
+      :zoom="13"
       :styles="styles"
       :zoomControl="false"
       :mapTypeControl="false"

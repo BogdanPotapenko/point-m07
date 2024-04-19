@@ -203,7 +203,7 @@ watch(activeMenu, () => {
         left: 100%;
         padding: 100px 60px 30px 30px;
         overflow: auto;
-        background: #656c88;
+        background: #464957;
         transition-duration: 500ms;
 
         &.active {
@@ -218,7 +218,7 @@ watch(activeMenu, () => {
           top: 0;
           left: 0;
           z-index: 10;
-          background: #464957;
+          background: $background;
         }
       }
       &-list {

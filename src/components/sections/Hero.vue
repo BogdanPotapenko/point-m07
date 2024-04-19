@@ -19,10 +19,10 @@
 
 <style lang="scss" scoped>
 .hero {
+  position: relative;
   width: 100%;
   height: 100vh;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-  position: relative;
   background-attachment: inherit !important;
   background-size: cover;
   background-color: rgba(51, 54, 68, 0.5);
@@ -49,7 +49,7 @@
   &::before {
     content: "";
     position: fixed;
-    top: 60px;
+    top: 58px;
     height: 50vh;
     background: linear-gradient(
       to bottom,
@@ -61,7 +61,7 @@
   &::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     height: 50vh;
     background: linear-gradient(
       to top,
@@ -74,7 +74,7 @@
     position: relative;
     z-index: 1;
     color: white;
-    margin-top: -10vh;
+    margin-top: -5vh;
     min-height: 100%;
     display: flex;
     flex-direction: column;

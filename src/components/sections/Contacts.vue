@@ -49,7 +49,7 @@
 <style lang="scss" scoped>
 .contacts {
   position: relative;
-  padding: 60px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
+  padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320))) 60px;
   background: $background;
 
   &-content {
@@ -121,7 +121,7 @@
       content: "";
       display: block;
       width: 0px;
-      height: 1px;
+      height: 2px;
       background: $white;
       margin: 2px 0;
       transition-duration: 300ms;
