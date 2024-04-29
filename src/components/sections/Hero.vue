@@ -24,7 +24,7 @@
   width: 100%;
   height: 100lvh;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-  background-color: rgba(51, 54, 68, 0.5);
+
   overflow: hidden;
 
   &::before {
@@ -49,31 +49,31 @@
     }
   }
 
-  // & .top {
-  //   width: 100%;
-  //   position: fixed;
-  //   left: 0;
-  //   top: 58px;
-  //   height: 50vh;
-  //   background: linear-gradient(
-  //     to bottom,
-  //     rgba(51, 54, 68, 1) 0%,
-  //     rgba(51, 54, 68, 0) 100%
-  //   );
-  // }
+  & .top {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 58px;
+    height: 50vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(51, 54, 68, 1) 0%,
+      rgba(51, 54, 68, 0) 100%
+    );
+  }
 
-  // & .bottom {
-  //   width: 100%;
-  //   position: absolute;
-  //   left: 0;
-  //   bottom: -1px;
-  //   height: 50vh;
-  //   background: linear-gradient(
-  //     to top,
-  //     rgba(51, 54, 68, 1) 0%,
-  //     rgba(51, 54, 68, 0) 100%
-  //   );
-  // }
+  & .bottom {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 50vh;
+    background: linear-gradient(
+      to top,
+      rgba(51, 54, 68, 1) 0%,
+      rgba(51, 54, 68, 0) 100%
+    );
+  }
 
   &-content {
     position: relative;

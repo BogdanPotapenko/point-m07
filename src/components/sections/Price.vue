@@ -2,10 +2,16 @@
   <section id="price" class="price">
     <div class="container">
       <div class="price-content">
-        <price-card
+        <!-- <price-card
           tilte="полірування"
           :prices="prices"
           warning="Поклейка авто в плівку і її ціна обговорюється при зустрічі або по телефону."
+        /> -->
+
+        <VDropDownLists
+          v-for="(service, index) in services"
+          :key="index"
+          :service="service"
         />
       </div>
     </div>
@@ -14,24 +20,28 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import PriceCard from "../domains/PriceList/PriceCard.vue";
+// import PriceCard from "../domains/PriceList/PriceCard.vue";
+import VDropDownLists from "../ui/VDropDown.vue";
 
-const prices = ref([
+const services = ref([
   {
     title: "полірування",
-    text: [
-      "Полірування авто - від 3000грн",
-      "Полірування фар - від 500грн",
-      "Полірування одного елементу - від 300грн",
+    img: "/point-m07/src/assets/img/poliruvanna.png",
+    prices: [
+      { type: "Полірування авто", price: 3000 },
+      { type: "Полірування фар", price: 500 },
+      { type: "Полірування одного елементу", price: 300 },
     ],
   },
   {
     title: "плівка",
-    text: ["Поклейка фар - від 1500грн"],
+    img: "/point-m07/src/assets/img/plivka.png",
+    prices: [{ type: "Поклейка фар", price: 1500 }],
   },
   {
     title: "хімчистка",
-    text: ["Хімчистка авто - від 1000грн"],
+    img: "/point-m07/src/assets/img/optika.png",
+    prices: [{ type: "Хімчистка авто", price: 1000 }],
   },
 ]);
 </script>
@@ -40,9 +50,6 @@ const prices = ref([
 .price {
   position: relative;
   padding: 200px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-  background-attachment: inherit !important;
-  background-size: cover;
-  background-color: rgba(51, 54, 68, 0.7);
 
   &::before,
   &::after {
