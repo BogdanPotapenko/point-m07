@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="hero">
+  <section id="hero" class="hero" :class="{ visible: backgroundVisible }">
     <span class="top"></span>
     <div class="container">
       <div class="hero-content">
@@ -16,7 +16,19 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+
+const backgroundVisible = ref(true);
+
+window.addEventListener("scroll", () => {
+  if (document.body.scrollHeight < window.scrollY + window.innerHeight + 100) {
+    backgroundVisible.value = false;
+  } else {
+    backgroundVisible.value = true;
+  }
+});
+</script>
 
 <style lang="scss" scoped>
 .hero {
@@ -24,28 +36,30 @@
   width: 100%;
   height: 100lvh;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
-
   overflow: hidden;
 
-  &::before {
-    content: "";
-    min-height: 100%;
-    display: block;
-    position: fixed;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: url(/src/assets/img/hero.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
+  &.visible {
+    &::before {
+      content: "";
+      min-height: 100%;
+      display: block;
+      position: fixed;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: url(/src/assets/img/hero.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: hidden;
+      opacity: 0.5;
 
-    @media screen and (max-width: 1024px) {
-      background-position: top -300px center;
-      background-size: auto;
+      @media screen and (max-width: 1024px) {
+        background-position: top -300px center;
+        background-size: auto;
+      }
     }
   }
 
@@ -57,8 +71,8 @@
     height: 50vh;
     background: linear-gradient(
       to bottom,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
+      $background 0%,
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
@@ -68,11 +82,7 @@
     left: 0;
     bottom: -1px;
     height: 50vh;
-    background: linear-gradient(
-      to top,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
-    );
+    background: linear-gradient(to top, $background 0%, rgba(0, 0, 0, 0) 100%);
   }
 
   &-content {

@@ -1,23 +1,25 @@
 <template>
   <div class="wrapper">
+    <app-loader />
     <app-header />
     <div class="main">
       <hero />
       <services />
       <price />
-      <contacts />
+      <call />
     </div>
     <app-footer />
   </div>
 </template>
 
 <script setup lang="ts">
+import AppLoader from "../components/layout/AppLoader.vue";
 import AppHeader from "../components/layout/AppHeader.vue";
 import AppFooter from "../components/layout/AppFooter.vue";
 import Hero from "../components/sections/Hero.vue";
 import Services from "../components/sections/Services.vue";
 import Price from "../components/sections/Price.vue";
-import Contacts from "../components/sections/Contacts.vue";
+import Call from "../components/sections/Call.vue";
 </script>
 
 <style lang="scss" scoped>

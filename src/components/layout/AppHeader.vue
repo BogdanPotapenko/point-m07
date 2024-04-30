@@ -2,7 +2,9 @@
   <header class="header" :class="{ 'header-scroll': header }">
     <div class="header-container">
       <div class="header-logo">
-        <img src="/src/assets/img/logo.png" alt="" />
+        <a href="https://bogdanpotapenko.github.io/point-m07/">
+          <img src="/src/assets/img/logo.png" alt=""
+        /></a>
       </div>
 
       <div class="header-content">
@@ -22,10 +24,10 @@
               <a class="link" @click="click(price)">Price</a>
             </li>
             <li>
-              <a class="link" @click="click(contacts)">Contacts</a>
+              <a class="link" @click="click(call)">Call</a>
             </li>
             <li>
-              <a class="link" @click="click(location)">Location</a>
+              <a class="link" @click="click(contacts)">Contacts</a>
             </li>
           </ul>
         </nav>
@@ -41,7 +43,7 @@ const hero = ref();
 const services = ref();
 const price = ref();
 const contacts = ref();
-const location = ref();
+const call = ref();
 
 const activeMenu = ref(false);
 
@@ -51,8 +53,8 @@ onMounted(() => {
   hero.value = document.getElementById("hero");
   services.value = document.getElementById("services");
   price.value = document.getElementById("price");
+  call.value = document.getElementById("call");
   contacts.value = document.getElementById("contacts");
-  location.value = document.getElementById("location");
 });
 
 const click = (el: HTMLElement) => {

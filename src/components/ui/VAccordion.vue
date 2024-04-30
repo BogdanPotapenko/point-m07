@@ -1,11 +1,11 @@
 <template>
-  <div class="drop-down" @click="active = !active">
-    <div class="drop-down-header">
-      <div class="drop-down-img"><img :src="service.img" alt="" /></div>
-      <h3 class="drop-down-title">{{ service.title }}</h3>
-      <button class="drop-down-dagger" :class="{ active: active }"></button>
+  <div class="accordion">
+    <div class="accordion-header" @click="active = !active">
+      <div class="accordion-img"><img :src="service.img" alt="" /></div>
+      <h3 class="accordion-title">{{ service.title }}</h3>
+      <button class="accordion-dagger" :class="{ active: active }"></button>
     </div>
-    <div class="drop-down-body body" :class="{ active: active }">
+    <div class="accordion-body body" :class="{ active: active }">
       <div class="body-content">
         <div
           class="body-content-row"
@@ -31,8 +31,9 @@ const active = ref(false);
 </script>
 
 <style lang="scss" scoped>
-.drop-down {
+.accordion {
   position: relative;
+  max-width: 1000px;
   width: 100%;
   cursor: pointer;
 
@@ -45,6 +46,12 @@ const active = ref(false);
     border: solid 1px $primary;
     border-radius: 30px;
     background: $background;
+
+    &:hover {
+      .accordion-img {
+        transform: scale(1.1);
+      }
+    }
   }
   &-img {
     position: absolute;
@@ -135,6 +142,11 @@ const active = ref(false);
         border-bottom: 1px solid $white;
         font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (1120)));
         overflow-y: auto;
+
+        @media screen and (min-width: 1440px) {
+          font-size: 20px;
+        }
+
         &-price {
           text-wrap: nowrap;
         }

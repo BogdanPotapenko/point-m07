@@ -2,13 +2,7 @@
   <section id="price" class="price">
     <div class="container">
       <div class="price-content">
-        <!-- <price-card
-          tilte="полірування"
-          :prices="prices"
-          warning="Поклейка авто в плівку і її ціна обговорюється при зустрічі або по телефону."
-        /> -->
-
-        <VDropDownLists
+        <v-accordion
           v-for="(service, index) in services"
           :key="index"
           :service="service"
@@ -20,13 +14,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-// import PriceCard from "../domains/PriceList/PriceCard.vue";
-import VDropDownLists from "../ui/VDropDown.vue";
+import VAccordion from "../ui/VAccordion.vue";
 
 const services = ref([
   {
     title: "полірування",
-    img: "/point-m07/src/assets/img/poliruvanna.png",
+    img: "poliruvanna.png",
     prices: [
       { type: "Полірування авто", price: 3000 },
       { type: "Полірування фар", price: 500 },
@@ -35,12 +28,12 @@ const services = ref([
   },
   {
     title: "плівка",
-    img: "/point-m07/src/assets/img/plivka.png",
+    img: "plivka.png",
     prices: [{ type: "Поклейка фар", price: 1500 }],
   },
   {
     title: "хімчистка",
-    img: "/point-m07/src/assets/img/optika.png",
+    img: "optika.png",
     prices: [{ type: "Хімчистка авто", price: 1000 }],
   },
 ]);
@@ -64,19 +57,15 @@ const services = ref([
     top: -1px;
     background: linear-gradient(
       to bottom,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
+      $background 0%,
+      rgba(0, 0, 0, 0) 100%
     );
   }
 
   &::after {
     content: "";
     bottom: -1px;
-    background: linear-gradient(
-      to top,
-      rgba(51, 54, 68, 1) 0%,
-      rgba(51, 54, 68, 0) 100%
-    );
+    background: linear-gradient(to top, $background 0%, rgba(0, 0, 0, 0) 100%);
   }
 
   &-content {
