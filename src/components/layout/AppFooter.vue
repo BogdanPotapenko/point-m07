@@ -81,7 +81,7 @@
 import { ref } from "vue";
 import { GoogleMap, CustomMarker } from "vue3-google-map";
 
-const apiKey = import.meta.env.VITE_API_kEY;
+const apiKey = import.meta.env.VITE_API_MAP_KEY;
 
 const center = ref({ lat: 50.53573236551917, lng: 30.21061096980906 });
 

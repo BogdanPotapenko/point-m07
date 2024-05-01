@@ -3,45 +3,50 @@
     <div class="container">
       <h2 class="call-title">ОТРИМАЙТЕ КОНСУЛЬТАЦІЮ</h2>
       <form class="call-form" @submit.prevent="onSubmit">
-        <Vinput label="name" type="text" placeholder="імя" v-model="name" />
+        <Vinput label="name" type="text" placeholder="Iмя" v-model="name" />
         <Vinput
           label="phone"
-          type="number"
+          type="text"
           placeholder="Телефон"
           v-model="phone"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'')"
         />
-        <VButton value="відправити" :disabled="!buttonDisabled" />
+        <VButton value="відправити" />
       </form>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import VButton from "../ui/VButton.vue";
 import Vinput from "../ui/Vinput.vue";
 
 const name = ref("");
 const phone = ref("");
 
-const onSubmit = async () => {
-  const formData = { name: "", phone: "" };
+const token = import.meta.env.VITE_API_BOT_KEY;
+const chaiId = "-4171691665";
 
-  formData.name = name.value;
-  formData.phone = phone.value;
+const onSubmit = async () => {
+  const formData = `Імя: ${name.value} %0AТелефон: ${phone.value}`;
 
   try {
-    await console.log(formData);
-    name.value = "";
-    phone.value = "";
+    const response = await fetch(
+      `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chaiId}&text=${formData}`,
+      {
+        method: "POST",
+      }
+    );
+    const result = await response.json();
+    if (result.ok) {
+      name.value = "";
+      phone.value = "";
+    }
   } catch (e) {
     console.log(e);
   }
 };
-
-const buttonDisabled = computed(
-  () => name.value.length >= 1 && phone.value.length >= 10
-);
 </script>
 
 <style lang="scss" scoped>

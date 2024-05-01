@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 defineProps<{
   value: string;
-  disabled: boolean;
+  disabled?: boolean;
 }>();
 </script>
 
