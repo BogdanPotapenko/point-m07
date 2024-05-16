@@ -47,9 +47,13 @@ const active = ref(false);
     border-radius: 30px;
     background: $background;
 
-    &:hover {
-      .accordion-img {
-        transform: scale(1.1);
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        .accordion-img {
+          img {
+            transform: scale(1.2);
+          }
+        }
       }
     }
   }
@@ -66,6 +70,8 @@ const active = ref(false);
     img {
       width: 100%;
       height: 100%;
+      transition: all 0.4s;
+      -webkit-transition: all 0.4s;
     }
   }
 
@@ -86,7 +92,8 @@ const active = ref(false);
       height: 1px;
       background: $primary;
       border-radius: 1px;
-      transition-duration: 500ms;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
     }
 
     &::after {
@@ -106,21 +113,22 @@ const active = ref(false);
     }
   }
   &-body {
-    padding: 0px 20px;
-    margin: 0px 20px 0px 45px;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+    margin: -1px 25px 0px 45px;
     max-height: 0;
     border: solid 1px $primary;
     border-top: none;
     border-radius: 0px 0px 20px 20px;
     background: $background;
     visibility: hidden;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    overflow: hidden;
 
     &.active {
-      padding: 20px 20px;
-      max-height: 800px;
+      max-height: 600px;
       visibility: visible;
+      transition: all 1s;
+      -webkit-transition: all 1s;
 
       .body-content {
         opacity: 1;
@@ -128,11 +136,19 @@ const active = ref(false);
     }
 
     .body-content {
+      padding: 20px;
       max-height: 750px;
-      -webkit-transition: all 0.5s;
-      transition: all 0.5s;
+      transition: opacity 0.5s;
+      -webkit-transition: opacity 0.5s;
       opacity: 0;
       overflow-y: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
 
       &-row {
         display: flex;

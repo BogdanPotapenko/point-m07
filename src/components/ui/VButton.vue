@@ -13,24 +13,23 @@ defineProps<{
 .button {
   width: 100%;
   padding: 12px 20px;
-  background: $white $primary;
+  background: $background;
   border: 1px solid $primary;
   border-radius: 30px;
   color: $white;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
+  transition: all 0.4s;
 
   &:hover {
-    background: $white;
-    color: $primary;
-    border: 1px solid $primary;
+    background: $primary;
+    color: $background;
   }
 
   &:disabled {
     background: $gray100;
     color: $gray200;
-    border: none;
     cursor: default;
   }
 }

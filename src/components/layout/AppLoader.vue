@@ -17,7 +17,7 @@
   background-repeat: no-repeat;
   background-size: 200px;
   background-position-y: center;
-  background-position-x: -250px;
+  background-position-x: -300px;
   opacity: 0;
   visibility: hidden;
   animation: load 0.8s linear;
@@ -29,11 +29,11 @@
     opacity: 1;
   }
   50% {
-    background-position-x: -250px;
+    background-position-x: -300px;
     opacity: 1;
   }
   100% {
-    background-position-x: -250px;
+    background-position-x: -300px;
     opacity: 0;
     visibility: hidden;
   }

@@ -2,6 +2,7 @@
   <label :for="label" class="input-container">
     <input
       :oninput="oninput"
+      :autocomplete="label"
       :id="label"
       :value="modelValue"
       :type="type"
@@ -39,8 +40,6 @@ const updateValue = (e: Event) => {
   position: relative;
   width: 100%;
   border-radius: 30px;
-
-  margin-bottom: 30px;
   background: $background;
   color: $white;
 
@@ -57,11 +56,13 @@ const updateValue = (e: Event) => {
     }
 
     &-valid {
-      opacity: 0.8;
+      padding: 11px 20px;
+      border: 2px solid $primary;
     }
     &:focus {
       outline: none;
-      opacity: 0.8;
+      padding: 11px 20px;
+      border: 2px solid $primary;
     }
   }
 }

@@ -329,7 +329,7 @@ const styles = ref([
   .contacts {
     position: relative;
     z-index: 1;
-    padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320))) 60px;
+    padding: 60px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
 
     &-content {
       display: flex;
@@ -403,6 +403,7 @@ const styles = ref([
         background: $white;
         margin: 2px 0;
         transition-duration: 300ms;
+        -webkit-transition-duration: 300ms;
       }
 
       &:hover {
@@ -432,7 +433,7 @@ const styles = ref([
     .pulse {
       position: relative;
       text-align: center;
-      padding: 10px;
+      padding: 7px;
       border-radius: 50%;
       background: #3d64ff;
 

@@ -1,33 +1,38 @@
 <template>
   <header class="header" :class="{ 'header-scroll': header }">
     <div class="header-container">
-      <div class="header-logo">
+      <div class="header-logo _anim-items">
         <a href="https://bogdanpotapenko.github.io/point-m07/">
           <img src="/src/assets/img/logo.png" alt=""
         /></a>
       </div>
 
       <div class="header-content">
-        <div @click="activeMenu = !activeMenu" class="header-content-button">
-          <div class="button-el" :class="{ active: activeMenu }"></div>
+        <div @click="showMenu = !showMenu" class="header-content-button">
+          <div class="button-el" :class="{ show: showMenu }"></div>
         </div>
 
-        <nav class="header-content-navbar" :class="{ active: activeMenu }">
-          <ul class="header-content-navbar-list">
+        <nav class="navbar _anim-items" :class="{ show: showMenu }">
+          <ul class="navbar-list">
             <li>
-              <a class="link" @click="click(hero)">About</a>
+              <a class="navbar-list-link" @click="scrollToSection(about)"
+                >Про нас</a
+              >
             </li>
             <li>
-              <a class="link" @click="click(services)">Services</a>
+              <a class="navbar-list-link" @click="scrollToSection(services)"
+                >Послуги</a
+              >
             </li>
             <li>
-              <a class="link" @click="click(price)">Price</a>
+              <a class="navbar-list-link" @click="scrollToSection(price)"
+                >Ціни</a
+              >
             </li>
             <li>
-              <a class="link" @click="click(call)">Call</a>
-            </li>
-            <li>
-              <a class="link" @click="click(contacts)">Contacts</a>
+              <a class="navbar-list-link" @click="scrollToSection(contacts)"
+                >Контакти</a
+              >
             </li>
           </ul>
         </nav>
@@ -39,26 +44,26 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
 
-const hero = ref();
+const about = ref();
 const services = ref();
 const price = ref();
 const contacts = ref();
-const call = ref();
+const callback = ref();
 
-const activeMenu = ref(false);
+const showMenu = ref(false);
 
 const header = ref(false);
 
 onMounted(() => {
-  hero.value = document.getElementById("hero");
+  about.value = document.getElementById("about");
   services.value = document.getElementById("services");
   price.value = document.getElementById("price");
-  call.value = document.getElementById("call");
+  callback.value = document.getElementById("callback");
   contacts.value = document.getElementById("contacts");
 });
 
-const click = (el: HTMLElement) => {
-  if (activeMenu.value) activeMenu.value = false;
+const scrollToSection = (el: HTMLElement) => {
+  if (showMenu.value) showMenu.value = false;
   if (el) {
     const y = el.getBoundingClientRect().top + window.scrollY - 60;
     window.scrollTo({ top: y, behavior: "smooth" });
@@ -73,8 +78,8 @@ window.addEventListener("scroll", () => {
   }
 });
 
-watch(activeMenu, () => {
-  if (activeMenu.value) {
+watch(showMenu, () => {
+  if (showMenu.value) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "auto";
@@ -101,6 +106,7 @@ watch(activeMenu, () => {
     height: 1px;
     background: $primary;
     transition-duration: 500ms;
+    -webkit-transition-duration: 500ms;
   }
 
   &-scroll {
@@ -130,6 +136,16 @@ watch(activeMenu, () => {
     position: relative;
     z-index: 11;
 
+    transform: translate(0px, -20%);
+    opacity: 0;
+    transition: all 0.8s ease 0.4s;
+    -webkit-transition: all 0.8s ease 0.4s;
+
+    &._active {
+      transform: translate(0px, 0px);
+      opacity: 1;
+    }
+
     img {
       width: auto;
       height: 100%;
@@ -153,6 +169,7 @@ watch(activeMenu, () => {
         width: 30px;
         height: 3px;
         transition-duration: 500ms;
+        -webkit-transition-duration: 500ms;
         background: $white;
         border-radius: 2px;
 
@@ -165,6 +182,7 @@ watch(activeMenu, () => {
           left: 0;
           border-radius: 2px;
           transition-duration: 500ms;
+          -webkit-transition-duration: 500ms;
           background: $white;
         }
 
@@ -175,8 +193,9 @@ watch(activeMenu, () => {
           bottom: 0;
         }
 
-        &.active {
+        &.show {
           transition-property: none;
+          -webkit-transition-property: none;
           background: transparent;
 
           &::before,
@@ -196,7 +215,18 @@ watch(activeMenu, () => {
       }
     }
 
-    &-navbar {
+    .navbar {
+      @media screen and (min-width: 768px) {
+        transform: translate(0px, -20%);
+        opacity: 0;
+        transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
+        -webkit-transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
+
+        &._active {
+          transform: translate(0px, 0px);
+          opacity: 1;
+        }
+      }
       @media screen and (max-width: 767px) {
         width: 100%;
         height: 100%;
@@ -205,10 +235,11 @@ watch(activeMenu, () => {
         left: 100%;
         padding: 100px 60px 30px 30px;
         overflow: auto;
-        background: #464957;
-        transition-duration: 500ms;
+        background: $secondary;
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
 
-        &.active {
+        &.show {
           left: 0;
         }
 
@@ -244,7 +275,7 @@ watch(activeMenu, () => {
           font-size: 30px;
           line-height: 30px;
         }
-        .link {
+        &-link {
           display: block;
           margin: 3px 0;
 
