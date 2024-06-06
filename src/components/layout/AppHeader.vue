@@ -2,9 +2,9 @@
   <header class="header" :class="{ 'header-scroll': header }">
     <div class="header-container">
       <div class="header-logo _anim-items">
-        <a href="https://bogdanpotapenko.github.io/point-m07/">
-          <img src="/src/assets/img/logo.png" alt=""
-        /></a>
+        <a class="header-logo-link" href="/" aria-label="Logo">
+          <img src="/logo.png" alt="logo" width="94" height="50" />
+        </a>
       </div>
 
       <div class="header-content">
@@ -15,24 +15,40 @@
         <nav class="navbar _anim-items" :class="{ show: showMenu }">
           <ul class="navbar-list">
             <li>
-              <a class="navbar-list-link" @click="scrollToSection(about)"
-                >Про нас</a
+              <button
+                class="navbar-list-link"
+                @click="scrollToSection(about)"
+                aria-label="about"
               >
+                <span>Про нас</span>
+              </button>
             </li>
             <li>
-              <a class="navbar-list-link" @click="scrollToSection(services)"
-                >Послуги</a
+              <button
+                class="navbar-list-link"
+                @click="scrollToSection(services)"
+                aria-label="services"
               >
+                <span>Послуги</span>
+              </button>
             </li>
             <li>
-              <a class="navbar-list-link" @click="scrollToSection(price)"
-                >Ціни</a
+              <button
+                class="navbar-list-link"
+                @click="scrollToSection(price)"
+                aria-label="price"
               >
+                <span>Ціни</span>
+              </button>
             </li>
             <li>
-              <a class="navbar-list-link" @click="scrollToSection(contacts)"
-                >Контакти</a
+              <button
+                class="navbar-list-link"
+                @click="scrollToSection(contacts)"
+                aria-label="contacts"
               >
+                <span>Контакти</span>
+              </button>
             </li>
           </ul>
         </nav>
@@ -60,6 +76,14 @@ onMounted(() => {
   price.value = document.getElementById("price");
   callback.value = document.getElementById("callback");
   contacts.value = document.getElementById("contacts");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY === 0) {
+      header.value = false;
+    } else if (header.value === false && window.scrollY > 0) {
+      header.value = true;
+    }
+  });
 });
 
 const scrollToSection = (el: HTMLElement) => {
@@ -69,14 +93,6 @@ const scrollToSection = (el: HTMLElement) => {
     window.scrollTo({ top: y, behavior: "smooth" });
   }
 };
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY === 0) {
-    header.value = false;
-  } else if (header.value === false && window.scrollY > 0) {
-    header.value = true;
-  }
-});
 
 watch(showMenu, () => {
   if (showMenu.value) {
@@ -135,22 +151,22 @@ watch(showMenu, () => {
     height: 50px;
     position: relative;
     z-index: 11;
-
     transform: translate(0px, -20%);
     opacity: 0;
-    transition: all 0.8s ease 0.4s;
-    -webkit-transition: all 0.8s ease 0.4s;
+    transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
+    -webkit-transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
 
     &._active {
       transform: translate(0px, 0px);
       opacity: 1;
     }
 
-    img {
-      width: auto;
-      height: 100%;
+    &-link {
+      display: block;
+      max-height: 50px;
     }
   }
+
   &-content {
     justify-self: end;
 
@@ -236,8 +252,8 @@ watch(showMenu, () => {
         padding: 100px 60px 30px 30px;
         overflow: auto;
         background: $secondary;
-        transition: all 0.5s ease;
-        -webkit-transition: all 0.5s ease;
+        transition: left 0.5s ease 0s;
+        -webkit-transition: left 0.5s ease 0s;
 
         &.show {
           left: 0;
@@ -263,7 +279,6 @@ watch(showMenu, () => {
         row-gap: 30px;
         font-size: 16px;
         line-height: 16px;
-        text-transform: uppercase;
 
         @media screen and (max-width: 1440px) {
           column-gap: calc(30px + (60 - 30) * ((100vw - 768px) / (1440 - 768)));
@@ -278,6 +293,8 @@ watch(showMenu, () => {
         &-link {
           display: block;
           margin: 3px 0;
+          color: $white;
+          text-transform: uppercase;
 
           &::before,
           &::after {

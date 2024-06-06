@@ -1,5 +1,7 @@
 <template>
-  <button class="button" :disabled="disabled">{{ value }}</button>
+  <button class="button" :aria-label="value" :disabled="disabled">
+    <span> {{ value }}</span>
+  </button>
 </template>
 
 <script lang="ts" setup>
@@ -20,15 +22,15 @@ defineProps<{
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  transition: all 0.4s;
+  transition: color 0.4s, background-color 0.4s;
 
   &:hover {
-    background: $primary;
+    background-color: $primary;
     color: $background;
   }
 
   &:disabled {
-    background: $gray100;
+    background-color: $gray100;
     color: $gray200;
     cursor: default;
   }

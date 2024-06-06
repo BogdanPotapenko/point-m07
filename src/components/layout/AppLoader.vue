@@ -1,5 +1,13 @@
 <template>
-  <div class="loader"></div>
+  <div class="loader">
+    <img
+      class="loader-logo"
+      src="/logo.png"
+      alt="logo"
+      width="200"
+      height="auto"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup></script>
@@ -13,29 +21,40 @@
   z-index: 999;
   width: 100%;
   height: 100vh;
-  background-image: url("/src/assets/img/logo.png");
-  background-repeat: no-repeat;
-  background-size: 200px;
-  background-position-y: center;
-  background-position-x: -300px;
   opacity: 0;
   visibility: hidden;
-  animation: load 0.8s linear;
+  animation: load 1s linear 0s;
+
+  &-logo {
+    max-width: 30vw;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translate(100vw, -50%);
+    animation: load-logo 0.5s linear 0s;
+  }
 }
 @keyframes load {
   0% {
-    background-position-x: 100vw;
     visibility: visible;
     opacity: 1;
   }
   50% {
-    background-position-x: -300px;
+    visibility: visible;
     opacity: 1;
   }
   100% {
-    background-position-x: -300px;
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@keyframes load-logo {
+  0% {
+    transform: translate(100vw, -50%);
+  }
+  100% {
+    transform: translate(-300px, -50%);
   }
 }
 </style>

@@ -4,8 +4,8 @@
       <h2 class="services-title _anim-items">Наші послуги</h2>
       <div class="services-body">
         <service-card
-          v-for="(service, index) in services"
-          :key="index"
+          v-for="service in services"
+          :key="service.id"
           :service="service"
         />
       </div>
@@ -14,30 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import ServiceCard from "../domains/services/ServiceCard.vue";
+import { useServices } from "../../composables/useServices";
 
-const services = ref([
-  {
-    title: "полірування",
-    img: "plies_ceramic.jpg",
-    prices: [
-      { type: "Полірування авто", price: 3000 },
-      { type: "Полірування фар", price: 500 },
-      { type: "Полірування одного елементу", price: 300 },
-    ],
-  },
-  {
-    title: "плівка",
-    img: "polishing_car.jpg",
-    prices: [{ type: "Поклейка фар", price: 1500 }],
-  },
-  {
-    title: "хімчистка",
-    img: "spraying_car.jpg",
-    prices: [{ type: "Хімчистка авто", price: 1000 }],
-  },
-]);
+const { data: services } = useServices();
 
 window.addEventListener("scroll", () => {
   if (document.querySelectorAll(".service-card")) {
@@ -70,8 +50,8 @@ window.addEventListener("scroll", () => {
     margin-bottom: 30px;
     transform: translate(0px, 150%);
     opacity: 0;
-    transition: all 0.8s ease 0s;
-    -webkit-transition: all 0.8s ease 0s;
+    transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+    -webkit-transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
 
     &._active {
       transform: translate(0px, 0px);

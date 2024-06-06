@@ -18,8 +18,10 @@
         </div>
         <img
           class="about-body-img _anim-items"
-          src="/src/assets/img/clean_car.jpg"
-          alt=""
+          src="/clean_car.jpg"
+          alt="img"
+          width="750"
+          height="auto"
         />
       </div>
     </div>
@@ -66,8 +68,8 @@
         margin-bottom: 10px;
         transform: translate(0px, 150%);
         opacity: 0;
-        transition: all 0.8s ease 0s;
-        -webkit-transition: all 0.8s ease 0s;
+        transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+        -webkit-transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
 
         &._active {
           transform: translate(0px, 0px);
@@ -80,8 +82,8 @@
         line-height: 130%;
         transform: translate(0px, 150%);
         opacity: 0;
-        transition: all 0.8s ease 0.2s;
-        -webkit-transition: all 0.8s ease 0.2s;
+        transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
+        -webkit-transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
 
         &._active {
           transform: translate(0px, 0px);
@@ -98,8 +100,8 @@
       display: block;
       width: 50%;
       opacity: 0;
-      transition: all 0.8s ease 0.4s;
-      -webkit-transition: all 0.8s ease 0.4s;
+      transition: opacity 0.8s ease 0.4s;
+      -webkit-transition: opacity 0.8s ease 0.4s;
 
       &._active {
         opacity: 1;

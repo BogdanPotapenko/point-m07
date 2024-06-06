@@ -15,7 +15,7 @@ import CallForm from "../domains/callback/CallForm.vue";
   position: relative;
   padding: 100px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
   background: $background;
-  background-image: url(/src/assets/icons/bg-form.svg);
+  background-image: url("/src/assets/icons/bg-form.svg");
   background-color: $white;
   background-size: 100%;
   background-repeat: no-repeat;

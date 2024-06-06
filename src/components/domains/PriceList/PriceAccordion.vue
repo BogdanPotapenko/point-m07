@@ -1,9 +1,15 @@
 <template>
   <div class="accordion">
     <div class="accordion-header" @click="active = !active">
-      <div class="accordion-img"><img :src="service.img" alt="" /></div>
+      <div class="accordion-img">
+        <img :src="service.icon" :alt="service.title" width="58" height="58" />
+      </div>
       <h3 class="accordion-title">{{ service.title }}</h3>
-      <button class="accordion-dagger" :class="{ active: active }"></button>
+      <button
+        class="accordion-dagger"
+        :aria-label="service.title"
+        :class="{ active: active }"
+      ></button>
     </div>
     <div class="accordion-body body" :class="{ active: active }">
       <div class="body-content">
@@ -66,6 +72,7 @@ const active = ref(false);
     border: solid 1px $primary;
     border-radius: 50%;
     left: -1px;
+    overflow: hidden;
 
     img {
       width: 100%;

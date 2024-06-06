@@ -55,6 +55,7 @@ window.addEventListener("scroll", () => {
   position: relative;
   width: 100%;
   height: 100lvh;
+  min-height: 400px;
   padding: 0px calc(20px + (60 - 20) * ((100vw - 320px) / (1440 - 320)));
   overflow: hidden;
 
@@ -69,7 +70,7 @@ window.addEventListener("scroll", () => {
       right: 0;
       top: 0;
       bottom: 0;
-      background: url(/src/assets/img/background.jpg);
+      background: url("/background.jpg");
       background-color: black;
       background-position: top 0px center;
       background-repeat: no-repeat;
@@ -78,14 +79,14 @@ window.addEventListener("scroll", () => {
       opacity: 0.7;
 
       @media screen and (max-width: 1024px) {
-        background: url(/src/assets/img/background-phone.jpg);
+        background: url("/background-phone.jpg");
         background-color: black;
         background-position: top -200px center;
         background-size: 100% auto;
         background-repeat: no-repeat;
       }
       @media screen and (max-width: 768px) {
-        background: url(/src/assets/img/background-phone.jpg);
+        background: url("/background-phone.jpg");
         background-color: black;
         background-position: top 60px center;
         background-size: 100% auto;
@@ -120,7 +121,7 @@ window.addEventListener("scroll", () => {
     position: relative;
     z-index: 1;
     color: white;
-    margin: 0 auto;
+    margin: 20px auto 0;
     min-height: 100%;
     max-width: 700px;
     display: flex;
@@ -130,7 +131,6 @@ window.addEventListener("scroll", () => {
     gap: 30px;
 
     &-title {
-      // color: white;
       display: block;
       transform: translate(0px, 120%);
       opacity: 0;
@@ -173,7 +173,6 @@ window.addEventListener("scroll", () => {
       &._active {
         transform: translate(0px, -20px);
         opacity: 1;
-        margin-top: 10px;
       }
     }
   }

@@ -3,9 +3,9 @@
     <div class="container">
       <h2 class="price-title _anim-items">Наші ціни</h2>
       <div class="price-content _anim-items">
-        <v-accordion
-          v-for="(service, index) in services"
-          :key="index"
+        <price-accordion
+          v-for="service in services"
+          :key="service.id"
           :service="service"
         />
       </div>
@@ -14,30 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import VAccordion from "../ui/VAccordion.vue";
+import PriceAccordion from "../domains/PriceList/PriceAccordion.vue";
+import { useServices } from "../../composables/useServices";
 
-const services = ref([
-  {
-    title: "полірування",
-    img: "poliruvanna.png",
-    prices: [
-      { type: "Полірування авто", price: 3000 },
-      { type: "Полірування фар", price: 500 },
-      { type: "Полірування одного елементу", price: 300 },
-    ],
-  },
-  {
-    title: "плівка",
-    img: "plivka.png",
-    prices: [{ type: "Поклейка фар", price: 1500 }],
-  },
-  {
-    title: "хімчистка",
-    img: "optika.png",
-    prices: [{ type: "Хімчистка авто", price: 1000 }],
-  },
-]);
+const { data: services } = useServices();
 </script>
 
 <style lang="scss" scoped>
@@ -77,10 +57,11 @@ const services = ref([
   &-title {
     text-align: center;
     margin-bottom: 30px;
+    text-transform: uppercase;
     transform: translate(0px, 120%);
     opacity: 0;
-    transition: all 0.8s ease 0s;
-    -webkit-transition: all 0.8s ease 0s;
+    transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+    -webkit-transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
 
     &._active {
       transform: translate(0px, 0px);
@@ -108,7 +89,7 @@ const services = ref([
         transform: translate(0px, 0px);
         opacity: 1;
 
-        @for $var from 1 to 4 {
+        @for $var from 1 to 15 {
           $delay: $var * 0.2;
           &:nth-child(#{$var}) {
             @if $var==1 {

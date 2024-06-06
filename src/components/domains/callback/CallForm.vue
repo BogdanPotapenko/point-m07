@@ -78,8 +78,8 @@ watch(formSubmited, () => {
 
   transform: scale(0);
   opacity: 0;
-  transition: all 0.8s ease 0s;
-  -webkit-transition: all 0.8s ease 0s;
+  transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
+  -webkit-transition: transform 0.8s ease 0s, opacity 0.8s ease 0s;
 
   &._active {
     transform: scale(1);
@@ -108,8 +108,8 @@ watch(formSubmited, () => {
 
       svg path {
         stroke-dashoffset: 0;
-        transition: all 0.5s ease 0.6s;
-        -webkit-transition: all 0.5s ease 0.6s;
+        transition: stroke-dashoffset 0.5s ease 0.6s;
+        -webkit-transition: stroke-dashoffset 0.5s ease 0.6s;
       }
     }
     svg {
@@ -123,8 +123,8 @@ watch(formSubmited, () => {
         stroke-dasharray: 34;
         stroke-dashoffset: 34;
         stroke-linecap: round;
-        transition: all 0s ease 0.5s;
-        -webkit-transition: all 0s ease 0.5s;
+        transition: stroke-dashoffset 0s ease 0.5s;
+        -webkit-transition: stroke-dashoffset 0s ease 0.5s;
       }
     }
     &-button {
@@ -139,8 +139,8 @@ watch(formSubmited, () => {
     gap: calc(20px + (50 - 20) * ((100vw - 320px) / (1440 - 320)));
     padding: 50px calc(30px + (60 - 30) * ((100vw - 320px) / (1440 - 320)));
     opacity: 1;
-    transition: all 0.5s ease 0.1s;
-    -webkit-transition: all 0.5s ease 0.1s;
+    transition: opacity 0.5s ease 0.1s;
+    -webkit-transition: opacity 0.5s ease 0.1s;
 
     @media screen and (min-width: 1440px) {
       padding: 50px;
@@ -153,6 +153,7 @@ watch(formSubmited, () => {
 
     &-title {
       text-align: center;
+      text-transform: uppercase;
     }
   }
 }
